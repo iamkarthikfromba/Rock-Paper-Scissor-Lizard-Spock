@@ -1,10 +1,10 @@
-import javax.swing.JFrame;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class Game extends JFrame
@@ -13,6 +13,7 @@ public class Game extends JFrame
     static Game obj = new Game();
     JLabel computer_choice, result, computer_score, player_score, label_computer;
     ImageIcon image_rock, image_paper, image_scissor, image_lizard, image_spock;
+
     int player_s = 0, comp_s = 0;
     public void setComputerChoice()
     {
@@ -30,12 +31,12 @@ public class Game extends JFrame
 
         computer_score = new JLabel();
         computer_score.setText("Computer: 0");
-        computer_score.setFont(new Font("Times New Roman", Font.BOLD, 26));        
+        computer_score.setFont(new Font("Times New Roman", Font.BOLD, 26));
         computer_score.setBounds(1300, 100, 230, 200);
-        
+
         player_score = new JLabel();
         player_score.setText("Player: 0");
-        player_score.setFont(new Font("Times New Roman", Font.BOLD, 26)); 
+        player_score.setFont(new Font("Times New Roman", Font.BOLD, 26));
         player_score.setBounds(1300, 150, 230, 200);
 
         result = new JLabel();
@@ -50,10 +51,8 @@ public class Game extends JFrame
     }
 
 
-
     public void setrocklabel()
     {
-        //create Label
         JLabel label_rock = new JLabel();
         label_rock.setText("Rock");
         label_rock.setIcon(image_rock);
@@ -66,28 +65,23 @@ public class Game extends JFrame
         label_rock.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e)
             {
-                //call calculate method
                 calculate(label_rock.getText());
             }
         });
-        
-        //add label to frame
-
         setLayout(null);
     }
 
     public void setpaperlabel()
     {
-        //create Label
         JLabel label_paper = new JLabel();
         label_paper.setText("Paper");
         label_paper.setIcon(image_paper);
         label_paper.setHorizontalTextPosition(JLabel.CENTER);
         label_paper.setVerticalTextPosition(JLabel.BOTTOM);
         label_paper.setBounds(480, 600, 200, 200);
-        
+
         add(label_paper);
-        
+
         label_paper.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e)
             {
@@ -95,9 +89,6 @@ public class Game extends JFrame
                 calculate(label_paper.getText());
             }
         });
-
-
-        //add label to frame
 
         setLayout(null);
     }
@@ -111,9 +102,9 @@ public class Game extends JFrame
         label_scissor.setHorizontalTextPosition(JLabel.CENTER);
         label_scissor.setVerticalTextPosition(JLabel.BOTTOM);
         label_scissor.setBounds(680, 600, 200, 200);
-        
+
         add(label_scissor);
-        
+
         label_scissor.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e)
             {
@@ -121,7 +112,6 @@ public class Game extends JFrame
                 calculate(label_scissor.getText());
             }
         });
-        //add label to frame
 
         setLayout(null);
     }
@@ -143,13 +133,11 @@ public class Game extends JFrame
                 calculate(label_lizard.getText());
             }
         });
-        //add label to frame
 
         setLayout(null);
     }
 
     public void setspocklabel() {
-        //create Label
         JLabel label_spock = new JLabel();
         label_spock.setText("Spock");
         label_spock.setIcon(image_spock);
@@ -165,7 +153,6 @@ public class Game extends JFrame
                 calculate(label_spock.getText());
             }
         });
-        //add label to frame
 
         setLayout(null);
     }
@@ -176,8 +163,6 @@ public class Game extends JFrame
 
         int random_choice = (int)((Math.random()*10)%5);
         String computer = list[random_choice];
-
-        //display computer choice on screen
 
         computer_choice.setText(computer);
 
@@ -208,7 +193,7 @@ public class Game extends JFrame
     public void updateScore(String player, String computer)
     {
         String res = "";
-        
+
         if (player.equals(computer))
         {
             res = "Draw";
@@ -314,8 +299,8 @@ public class Game extends JFrame
             }
         }
 
-        
-        else 
+
+        else
         {
             if(computer.equals("Rock"))
             {
@@ -342,31 +327,30 @@ public class Game extends JFrame
         label_computer.setText("Computer VS Player");
         label_computer.setFont(new Font("Arial", Font.BOLD, 50));
         label_computer.setBounds(520, 00, 900, 100);
-
         add(label_computer);
     }
 
 
     public void load_images()
     {
-        image_rock = new ImageIcon(new ImageIcon("E:/Sheldon Online/Rock.png")
+        image_rock = new ImageIcon(new ImageIcon("C:/Java Notebook/Rock-Paper-Scissor-Lizard-Spock-main/Rock.png")
                 .getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
 
         setrocklabel();
 
-        image_paper = new ImageIcon(new ImageIcon("E:/Sheldon Online/Paper.png")
+        image_paper = new ImageIcon(new ImageIcon("C:/Java Notebook/Rock-Paper-Scissor-Lizard-Spock-main/Paper.png")
                 .getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
         setpaperlabel();
 
-        image_scissor = new ImageIcon(new ImageIcon("E:/Sheldon Online/Scissor.png")
+        image_scissor = new ImageIcon(new ImageIcon("C:/Java Notebook/Rock-Paper-Scissor-Lizard-Spock-main/Scissor.png")
                 .getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
         setscissorlabel();
 
-        image_lizard = new ImageIcon(new ImageIcon("E:/Sheldon Online/Lizard.png")
+        image_lizard = new ImageIcon(new ImageIcon("C:/Java Notebook/Rock-Paper-Scissor-Lizard-Spock-main/Lizard.png")
                 .getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
         setlizardlabel();
 
-        image_spock = new ImageIcon(new ImageIcon("E:/Sheldon Online/Spock.png")
+        image_spock = new ImageIcon(new ImageIcon("C:/Java Notebook/Rock-Paper-Scissor-Lizard-Spock-main/Spock.png")
                 .getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
         setspocklabel();
     }
@@ -381,6 +365,29 @@ public class Game extends JFrame
         obj.setVisible(true);
     }
 
+    JButton resetButton;
+    public void setResetButton() {
+        resetButton = new JButton("Reset Scores");
+        resetButton.setBounds(25, 250, 200, 50);
+        resetButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        add(resetButton);
+
+        resetButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resetScores();
+            }
+        });
+    }
+
+    public void resetScores() {
+        player_s = 0;
+        comp_s = 0;
+        player_score.setText("Player: 0");
+        computer_score.setText("Computer: 0");
+        result.setText("");
+        computer_choice.setIcon(null);
+    }
+
     public static void main(String args[])
     {
         obj.createField();
@@ -388,5 +395,6 @@ public class Game extends JFrame
         obj.titleLabel();
         obj.setComputerChoice();
         obj.setScoreResult();
-    }    
+        obj.setResetButton();
+    }
 }
